@@ -1,0 +1,30 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: integrationapp
+    version: 1.0.0
+
+  cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 30000
+            readTimeout: 30000
+
+feign:
+  payment:
+    url: localhost:8091
+  shipping:
+    url: localhost:8090
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info"
+  info:
+    env:
+      enabled: true
